@@ -10,11 +10,12 @@ import { useUserProductStore } from '@/stores/UserProduct'
 const userProductStore = useUserProductStore()
 const productList = userProductStore.productList
 const searchText = ref('')
-const filteredTags = ref([])
-const tagName = ref('')
+const filteredTags = ref<string[]>([])
+const tagName = ref<string>('')
 
 const filteredProducts = computed(() => {
-  return userProductStore.filterProducts(searchText.value, filteredTags.value, tagName.value)
+  return userProductStore.filterProducts(searchText.value)
+  // return userProductStore.filterProducts(searchText.value, filteredTags.value, tagName.value)
 })
 
 const handleSearch = (search: string) => {

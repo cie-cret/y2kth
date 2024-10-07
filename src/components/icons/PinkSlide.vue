@@ -20,7 +20,6 @@ defineProps<{ message: string }>()
       <span>{{ message }}</span>
       <span>{{ message }}</span>
       <span>{{ message }}</span>
-      <!-- REVISE PROPS HERE -->
     </div>
   </div>
 </template>

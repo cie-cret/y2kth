@@ -88,20 +88,24 @@ export const useUserProductStore = defineStore('product', {
     // filterProductList: [],
   }),
   actions: {
-    filterProducts(searchText: string, filteredTags: Array<Object>, tagName: string[]): unknown {
+    filterProducts(searchText: string) {
+      // filterProducts(searchText: string, filteredTags: Array<Object>, tagNames: string[]) {
       let filteredProductList = this.productList
 
       // Filter
       // let filteredProductList = []
-      const tagArray: Array<string> = []
-      filteredTags.map((tagName) => tagArray.push(tagName))
+      // const tagArray: Array<string> = []
+      // filteredTags.map((tag) => tagArray.push(tag as string))
       // console.log('Array', tagArray)
 
-      const filteredList = filteredProductList.filter((product) => product.tags.includes(tagName))
+      // const filteredList = filteredProductList.filter((product) =>
+      //   tagNames.some((tag) => product.tags.includes(tag))
+      // )
+      // const filteredList = filteredProductList.filter((product) => product.tags.includes(tagName))
       // filteredProductList.push(...filteredList)
       // filteredProductList = filteredList
-      console.log('Prev', filteredList)
-      console.log('Filter', filteredProductList)
+      // console.log('Prev', filteredList)
+      // console.log('Filter', filteredProductList)
 
       // for (const tag of tagArray) {
       //   filteredProductList = filteredProductList.filter((product) => product.tags.includes(tag))

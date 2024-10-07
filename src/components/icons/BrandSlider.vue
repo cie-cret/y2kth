@@ -4,23 +4,23 @@
   <div class="logos py-4 border-y-solid border-y-4 border-black flex relative">
     <div class="logos-slide flex gap-16">
       <!-- <div class="logos-slide"> -->
-      <img src="../logos/3m.svg" />
-      <img src="../logos/barstool-store.svg" />
-      <img src="../logos/budweiser.svg" />
-      <img src="../logos/buzzfeed.svg" />
-      <img src="../logos/forbes.svg" />
-      <img src="../logos/macys.svg" />
-      <img src="../logos/menshealth.svg" />
-      <img src="../logos/mrbeast.svg" />
+      <img src="/images/logos/3m.svg" />
+      <img src="/images/logos/barstool-store.svg" />
+      <img src="/images/logos/budweiser.svg" />
+      <img src="/images/logos/buzzfeed.svg" />
+      <img src="/images/logos/forbes.svg" />
+      <img src="/images/logos/macys.svg" />
+      <img src="/images/logos/menshealth.svg" />
+      <img src="/images/logos/mrbeast.svg" />
 
-      <img src="../logos/3m.svg" />
-      <img src="../logos/barstool-store.svg" />
-      <img src="../logos/budweiser.svg" />
-      <img src="../logos/buzzfeed.svg" />
-      <img src="../logos/forbes.svg" />
-      <img src="../logos/macys.svg" />
-      <img src="../logos/menshealth.svg" />
-      <img src="../logos/mrbeast.svg" />
+      <img src="/images/logos/3m.svg" />
+      <img src="/images/logos/barstool-store.svg" />
+      <img src="/images/logos/budweiser.svg" />
+      <img src="/images/logos/buzzfeed.svg" />
+      <img src="/images/logos/forbes.svg" />
+      <img src="/images/logos/macys.svg" />
+      <img src="/images/logos/menshealth.svg" />
+      <img src="/images/logos/mrbeast.svg" />
     </div>
   </div>
 </template>

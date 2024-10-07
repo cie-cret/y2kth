@@ -14,8 +14,8 @@ interface Product {
 defineProps<{ products: Product[] }>()
 
 const getImgURL = (pImage: string) => {
-  const path = new URL(`@/components/products/`, import.meta.url)
-  return `${path}/${pImage}.jpg`
+  // const path = new URL(`@/components/products/`, import.meta.url)
+  return `/images/products/${pImage}.jpg`
 }
 </script>
 

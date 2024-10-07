@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { RouterLink } from 'vue-router'
 </script>
 
@@ -47,7 +47,7 @@ import { RouterLink } from 'vue-router'
           <div class="navbar-center text-xl hover:bg-[#f0f0f0]">
             <img
               class="w-36 absolute top-0 bottom-0 center-ab"
-              src="../../public/logo_y2k.png"
+              src="/logo_y2k.png"
               alt="Y2K_logo"
             />
           </div>

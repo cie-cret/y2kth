@@ -1,9 +1,17 @@
 <script setup lang="ts">
 import { ref, defineEmits } from 'vue'
 
-defineProps<{
-  products: Array<string | number | Array<string>>
-}>()
+interface Product {
+  pName: string
+  pImage: string
+  quantity?: number
+  about?: string
+  status?: string
+  price: number
+  tags: string[]
+}
+
+defineProps<{ products: Product[] }>()
 
 const titles: Array<string> = ['body', 'type', 'price']
 const bodies: Array<string> = ['all', 'masculine', 'feminine']
@@ -16,11 +24,11 @@ const capitalizeFirstLetter = (letter: string): string => {
   return letter.charAt(0).toUpperCase() + letter.slice(1)
 }
 
-const sendFilter = (e: string | Array<string>) => {
-  if (!e.target.checked) {
-    emit('remove', e.target.value)
+const sendFilter = (e: Event) => {
+  if (!(e.target as HTMLInputElement).checked) {
+    emit('remove', (e.target as HTMLInputElement).value)
   } else {
-    emit('add', e.target.value)
+    emit('add', (e.target as HTMLInputElement).value)
   }
   // emit('filter', e.target.value)
 }

@@ -1,7 +1,19 @@
 <script setup lang="ts">
 import NewIcon from './icons/NewIcon.vue'
 
-defineProps<{ products: Array<string | number | Array<string>> }>()
+// defineProps<{ products: Array<string | number | Array<string>> }>()
+
+interface Product {
+  pName: string
+  pImage: string
+  quantity?: number
+  about?: string
+  status?: string
+  price: number
+  tags: string[]
+}
+
+defineProps<{ products: Product[] }>()
 
 const getImgURL = (pImage: string) => {
   const path = new URL(`@/components/products/`, import.meta.url)

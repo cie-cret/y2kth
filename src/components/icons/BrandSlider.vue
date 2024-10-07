@@ -1,4 +1,4 @@
-<script setup></script>
+<script setup lang="ts"></script>
 
 <template>
   <div class="logos py-4 border-y-solid border-y-4 border-black flex relative">

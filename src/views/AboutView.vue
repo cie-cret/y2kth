@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import UserLayout from '@/layouts/UserLayout.vue'
-import BrandSlider from '@/components/icons/BrandSlider.vue'
-import NewProductShelf from '@/components/NewProductShelf.vue'
-import MoveWave from '@/components/icons/MoveWave.vue'
+import UserLayout from '../layouts/UserLayout.vue'
+// import BrandSlider from '@/components/icons/BrandSlider.vue'
+// import NewProductShelf from '@/components/NewProductShelf.vue'
+// import MoveWave from '@/components/icons/MoveWave.vue'
 </script>
 
 <template>

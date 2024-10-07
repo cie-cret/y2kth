@@ -2,9 +2,9 @@
 import { ref } from 'vue'
 
 import UserLayout from '@/layouts/UserLayout.vue'
-import BrandSlider from '@/components/icons/BrandSlider.vue'
+// import BrandSlider from '@/components/icons/BrandSlider.vue'
 
-const greyText = ref(false)
+// const greyText = ref(false)
 </script>
 
 <template>

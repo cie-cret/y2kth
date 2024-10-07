@@ -88,7 +88,7 @@ export const useUserProductStore = defineStore('product', {
     // filterProductList: [],
   }),
   actions: {
-    filterProducts(searchText: string, filteredTags: Array<Object>, tagName: string): unknown {
+    filterProducts(searchText: string, filteredTags: Array<Object>, tagName: string[]): unknown {
       let filteredProductList = this.productList
 
       // Filter

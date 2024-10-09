@@ -1,5 +1,32 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
+import { ref, onMounted } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
+
+const route = useRoute()
+const activeMenu = ref('')
+
+const menus = [
+  {
+    name: 'Home',
+    routeName: 'home'
+  },
+  {
+    name: 'Shop',
+    routeName: 'shop'
+  },
+  {
+    name: 'About',
+    routeName: 'about'
+  },
+  {
+    name: 'Contact',
+    routeName: 'contact'
+  }
+]
+
+onMounted(() => {
+  activeMenu.value = route.name as string
+})
 </script>
 
 <template>
@@ -12,10 +39,18 @@ import { RouterLink } from 'vue-router'
     <div>
       <div class="navbar px-10 relative">
         <div class="navbar-start flex gap-16">
-          <div><RouterLink :to="{ name: 'home' }">Home</RouterLink></div>
+          <li v-for="(menu, index) in menus" :key="index">
+            <RouterLink
+              :to="{ name: menu.routeName }"
+              class="list-none"
+              :class="menu.routeName === activeMenu ? 'active' : ''"
+              >{{ menu.name }}</RouterLink
+            >
+          </li>
+          <!-- <div><RouterLink :to="{ name: 'home' }">Home</RouterLink></div>
           <div><RouterLink :to="{ name: 'shop' }">Shop</RouterLink></div>
           <div><RouterLink :to="{ name: 'about' }">About</RouterLink></div>
-          <div><RouterLink :to="{ name: 'contact' }">Contact Us</RouterLink></div>
+          <div><RouterLink :to="{ name: 'contact' }">Contact Us</RouterLink></div> -->
           <!-- <div class="dropdown">
           <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
             <svg
@@ -46,12 +81,13 @@ import { RouterLink } from 'vue-router'
         <RouterLink :to="{ name: 'home' }">
           <div class="navbar-center text-xl hover:bg-[#f0f0f0]">
             <img
-              class="w-36 absolute top-0 bottom-0 center-ab"
+              class="w-36 absolute top-0 bottom-0 center-logo"
               src="/logo_y2k.png"
               alt="Y2K_logo"
             />
           </div>
         </RouterLink>
+        <!-- Cart -->
         <div class="navbar-end">
           <button class="btn btn-ghost btn-circle">
             <div class="indicator">
@@ -72,6 +108,18 @@ import { RouterLink } from 'vue-router'
               <span class="badge badge-sm badge-primary indicator-item">0</span>
             </div>
           </button>
+          <!-- Toggle -->
+          <div
+            tabindex="0"
+            class="card card-compact dropdown-content bg-base-100 z-[1] mt-3 w-52 shadow hidden"
+          >
+            <div class="card-body">
+              <div class="card-actions">
+                <a href="#" class="btn btn-primary btn-block">View cart</a>
+              </div>
+            </div>
+          </div>
+          <!-- User Profile -->
           <div class="dropdown dropdown-end">
             <div tabindex="0" role="button" class="btn btn-ghost ml-4 btn-circle avatar">
               <div class="w-8 rounded-full">
@@ -83,7 +131,7 @@ import { RouterLink } from 'vue-router'
             </div>
             <ul
               tabindex="0"
-              class="menu menu-sm dropdown-content bg-base-100 z-[1] mt-3 w-52 p-2 shadow"
+              class="menu menu-sm dropdown-content bg-base-100 mt-3 w-52 p-2 z-10 shadow"
             >
               <li>
                 <a class="justify-between"> Login </a>
@@ -100,7 +148,7 @@ import { RouterLink } from 'vue-router'
     <footer class="footer footer-center bg-primary text-primary-content p-6">
       <aside>
         <a class="btn btn-ghost text-xl hover:bg-primary mb-6"
-          ><img class="w-36 object-scale-down" src="../../public/logo_y2k.png" alt="Y2K_logo"
+          ><img class="w-36 object-scale-down" src="/logo_y2k.png" alt="Y2K_logo"
         /></a>
         <p class="font-bold">
           Y2K TH Ltd.
@@ -157,13 +205,24 @@ import { RouterLink } from 'vue-router'
 </template>
 
 <style scoped>
+@import '../scss/breakpoints.scss';
+
 * {
   box-sizing: border-box;
 }
 
-.center-ab {
+li {
+  list-style: none;
+}
+
+.center-logo {
   left: 0;
   right: 0;
   margin-inline: auto;
+}
+
+.active {
+  color: #3869c8;
+  font-weight: bolder;
 }
 </style>

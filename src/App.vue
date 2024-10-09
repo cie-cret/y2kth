@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import './style.scss'
+import './style.css'
 </script>
 
 <template>

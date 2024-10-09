@@ -17,8 +17,11 @@ const titles: Array<string> = ['body', 'type', 'price']
 const bodies: Array<string> = ['all', 'masculine', 'feminine']
 const tags: Array<string> = ['tops', 'bottoms', 'accessory']
 
-const emit = defineEmits(['remove', 'add'])
+const emit = defineEmits(['remove', 'add', 'active', 'pRange'])
 const show = ref(false)
+const activeBody = ref('all')
+const minPrice = ref(100)
+const maxPrice = ref(1000)
 
 const capitalizeFirstLetter = (letter: string): string => {
   return letter.charAt(0).toUpperCase() + letter.slice(1)
@@ -33,14 +36,20 @@ const sendFilter = (e: Event) => {
   // emit('filter', e.target.value)
 }
 
-// const activeButton = (): void => {
-//   return
-// }
+const activeButton = (e: Event) => {
+  const value = (e.target as HTMLButtonElement).value
+  activeBody.value = value
+  emit('active', value)
+}
+
+const updatePriceRange = () => {
+  emit('pRange', { min: minPrice.value, max: maxPrice.value })
+}
 </script>
 
 <template>
   <div class="flex items-center relative">
-    <button class="btn btn-primary btn-sm" @click="show = !show">Filter</button>
+    <button class="btn btn-primary btn-sm" @click="show = !show">Filters</button>
     <div v-if="show" class="absolute top-10 z-20 w-48 shadow">
       <ul class="bg-base-100 z-[1] w-96 p-2 shadow border-primary border-2">
         <div v-for="title in titles" :key="title" class="mb-2">
@@ -50,7 +59,14 @@ const sendFilter = (e: Event) => {
           <!-- Sex -->
           <div v-if="title === 'body'" class="flex ml-6">
             <li v-for="(body, index) in bodies" :key="index" class="flex mr-4">
-              <button :value="body" class="btn btn-sm" type="button" name="body">
+              <button
+                :value="body"
+                class="btn btn-sm"
+                :class="{ 'btn-primary': activeBody === body }"
+                type="button"
+                name="body"
+                @click="activeButton"
+              >
                 {{ capitalizeFirstLetter(body) }}
               </button>
             </li>
@@ -77,8 +93,9 @@ const sendFilter = (e: Event) => {
                 <span>Min:</span>
                 <input
                   type="number"
-                  class="text-center bg-base-100 text-sm w-full input-min border-default border-2 price"
-                  value="100"
+                  class="text-center bg-base-100 text-sm w-full border-default border-2 input-min price"
+                  v-model="minPrice"
+                  @input="updatePriceRange"
                 />
               </div>
               <div class="flex text-primary mx-6">—</div>
@@ -86,8 +103,9 @@ const sendFilter = (e: Event) => {
                 <span>Max:</span>
                 <input
                   type="number"
-                  class="text-center bg-base-100 text-sm w-full input-max border-default border-2 price"
-                  value="1000"
+                  class="text-center bg-base-100 text-sm w-full border-default border-2 input-max price"
+                  v-model="maxPrice"
+                  @input="updatePriceRange"
                 />
               </div>
             </div>
@@ -111,5 +129,9 @@ input::-webkit-inner-spin-button {
     outline: 2px solid #fe68a8;
     outline-offset: 0px;
   }
+}
+
+.active {
+  background-color: #fe68a8;
 }
 </style>

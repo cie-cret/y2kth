@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 
 import UserLayout from '@/layouts/UserLayout.vue'
-// import BrandSlider from '@/components/icons/BrandSlider.vue'
 
 // const greyText = ref(false)
 </script>
@@ -52,66 +51,68 @@ import UserLayout from '@/layouts/UserLayout.vue'
                 >
               </p>
             </div>
+            <!-- Mail -->
             <div class="flex flex-col">
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label for="fname">First Name</label>
-                  <input
-                    type="text"
-                    id="fname"
-                    name="fname"
-                    placeholder="First Name"
-                    class="bg-base-100 input input-bordered input-md w-full rounded-none"
-                    required
-                  />
+              <form action="mailto:ciecret@gmail.com" method="GET">
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label for="fname">First Name</label>
+                    <input
+                      type="text"
+                      id="fname"
+                      name="fname"
+                      placeholder="First Name"
+                      class="bg-base-100 input input-bordered input-md w-full rounded-none"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <label for="lname">Last Name</label>
+                    <input
+                      type="text"
+                      id="lname"
+                      name="lname"
+                      placeholder="Last Name"
+                      class="bg-base-100 input input-bordered input-md w-full rounded-none"
+                      required
+                    />
+                  </div>
                 </div>
-                <div>
-                  <label for="fullname">Last Name</label>
-                  <input
-                    type="text"
-                    id="lname"
-                    name="lname"
-                    placeholder="Last Name"
-                    class="bg-base-100 input input-bordered input-md w-full rounded-none"
-                    required
-                  />
-                </div>
-              </div>
-              <label for="lname">Your Email</label>
-              <input
-                type="text"
-                id="useremail"
-                name="useremail"
-                placeholder="Email"
-                class="bg-base-100 input input-bordered input-md w-full rounded-none"
-                required
-              />
-              <label for="reason">Reason</label>
-              <select
-                id="reason"
-                name="reason"
-                class="bg-base-100 input input-bordered input-md w-full rounded-none"
-                required
-              >
-                <option value="" disabled selected>Please select your reason</option>
-                <option value="shipping">Shipping</option>
-                <option value="return">Return</option>
-                <option value="other">Other</option>
-              </select>
+                <label for="orderID">Order ID</label>
+                <input
+                  type="text"
+                  id="orderID"
+                  name="orderID"
+                  placeholder="Your Order ID"
+                  class="bg-base-100 input input-bordered input-md w-full rounded-none"
+                />
+                <label for="reason">Reason</label>
+                <select
+                  id="reason"
+                  name="reason"
+                  class="bg-base-100 input input-bordered input-md w-full rounded-none"
+                  required
+                >
+                  <option value="" disabled selected>Please select your reason</option>
+                  <option value="shipping">Shipping</option>
+                  <option value="return">Return</option>
+                  <option value="other">Other</option>
+                </select>
 
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Please Explain"
-                style="height: 100px"
-                class="bg-base-100 input input-bordered input-md w-full rounded-none"
-                required
-              ></textarea>
+                <label for="message">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Please Explain"
+                  style="height: 100px"
+                  class="bg-base-100 input input-bordered input-md w-full rounded-none"
+                  required
+                ></textarea>
 
-              <button class="btn btn-secondary text-xl rounded-none my-4 mx-0.5 pixel-button">
-                <span class="pixel-font">Submit</span>
-              </button>
+                <button class="btn btn-secondary text-xl rounded-none my-4 mx-0.5 pixel-button">
+                  <span class="pixel-font">Submit</span>
+                </button>
+              </form>
             </div>
           </div>
         </div>
@@ -182,7 +183,7 @@ option {
 
 .blue-bg {
   background: linear-gradient(to right, #3869c8, #87a5de);
-  z-index: 10;
+  z-index: 5;
   /* margin-inline: auto; */
   border-bottom: 4px solid #000;
   max-height: 2rem;
@@ -196,7 +197,7 @@ option {
 }
 
 .xp-button {
-  z-index: 20;
+  z-index: 5;
   height: 100%;
   width: 36px;
   max-height: 2rem;
@@ -228,7 +229,7 @@ option {
 .screen-icon {
   height: 40%;
   width: 50%;
-  z-index: 30;
+  z-index: 5;
   top: 0.25rem;
   left: 0.3rem;
   border: 3px solid #000;

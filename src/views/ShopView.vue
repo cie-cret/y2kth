@@ -8,14 +8,17 @@ import { computed, ref } from 'vue'
 import { useUserProductStore } from '@/stores/UserProduct'
 
 const userProductStore = useUserProductStore()
-const productList = userProductStore.productList
 const searchText = ref('')
-const filteredTags = ref<string[]>([])
-const tagName = ref<string>('')
+const bodyType = ref<string>('')
+const tagNames = ref<string[]>([])
+const minPrice = ref(100)
+const maxPrice = ref(1000)
 
 const filteredProducts = computed(() => {
-  return userProductStore.filterProducts(searchText.value)
-  // return userProductStore.filterProducts(searchText.value, filteredTags.value, tagName.value)
+  return userProductStore.filterProducts(searchText.value, bodyType.value, tagNames.value, {
+    min: minPrice.value,
+    max: maxPrice.value
+  })
 })
 
 const handleSearch = (search: string) => {
@@ -23,14 +26,30 @@ const handleSearch = (search: string) => {
 }
 
 const handleCheckboxRemove = (remove: string) => {
-  filteredTags.value.splice(filteredTags.value.indexOf(remove), 1)
-  // console.log('Deleted', filteredTags.value)
+  const index = tagNames.value.indexOf(remove)
+  if (index !== -1) {
+    tagNames.value.splice(tagNames.value.indexOf(remove), 1)
+    // console.log('Deleted', tagNames.value)
+  }
 }
 
 const handleCheckboxAdd = (add: string) => {
-  filteredTags.value.push(add)
-  tagName.value = add
-  console.log('Added', filteredTags.value)
+  if (!tagNames.value.includes(add)) {
+    tagNames.value.push(add)
+    // console.log('Added', tagNames.value)
+  }
+}
+
+const handleButtonToggle = (active: string) => {
+  bodyType.value = active
+  // console.log(active)
+}
+
+const controlPriceRange = (pRange: { min: number; max: number }) => {
+  minPrice.value = pRange.min
+  maxPrice.value = pRange.max
+
+  // console.log('Price Range:', minPrice.value, maxPrice.value)
 }
 
 // const handleCheckbox = (filter: string) => {
@@ -61,6 +80,8 @@ const handleCheckboxAdd = (add: string) => {
           :products="filteredProducts"
           @add="handleCheckboxAdd"
           @remove="handleCheckboxRemove"
+          @active="handleButtonToggle"
+          @pRange="controlPriceRange"
         ></FilterDropdown>
       </div>
       <!-- Product -->

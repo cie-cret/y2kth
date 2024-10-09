@@ -205,7 +205,7 @@ onMounted(() => {
 </template>
 
 <style scoped>
-@import '../scss/breakpoints.scss';
+/* @import '../scss/breakpoints.scss'; */
 
 * {
   box-sizing: border-box;

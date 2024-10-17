@@ -1,10 +1,4 @@
 <script setup lang="ts">
-// defineProps({
-//   message: {
-//     type: String
-//   }
-// })
-
 defineProps<{ message: string }>()
 </script>
 
@@ -46,6 +40,14 @@ defineProps<{ message: string }>()
     font-size: 5rem;
 
     @include mobile {
+      font-size: 3.5rem;
+    }
+
+    @include verticalTablet {
+      font-size: 4rem;
+    }
+
+    @include horizontalTablet {
       font-size: 4rem;
     }
 

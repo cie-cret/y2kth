@@ -112,12 +112,12 @@ const productList = userProductStore.productList
 
 .hero {
   @include mobile {
-    min-height: 78vh;
+    min-height: 75vh;
   }
 
-  @include verticalTablet {
-    min-height: 30vh;
-  }
+  // @include verticalTablet {
+  //   min-height: 30vh;
+  // }
 
   @include laptop {
     min-height: 84vh;

@@ -38,14 +38,22 @@ defineProps<{ message: string }>()
     font-family: 'VT323', monospace;
     font-weight: 700;
     font-size: 5rem;
-  }
 
-  @include mobile {
-    font-size: 4rem;
-  }
+    @include mobile {
+      font-size: 3.5rem;
+    }
 
-  @include laptop {
-    font-size: 5rem;
+    @include verticalTablet {
+      font-size: 4rem;
+    }
+
+    @include horizontalTablet {
+      font-size: 4rem;
+    }
+
+    @include laptop {
+      font-size: 5rem;
+    }
   }
 }
 

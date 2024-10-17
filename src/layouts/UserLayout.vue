@@ -231,6 +231,20 @@ onMounted(() => {
     }
   }
 
+  @include verticalTablet {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+
+  @include horizontalTablet {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+
   @include laptop {
     p {
       font-size: 1.125rem;

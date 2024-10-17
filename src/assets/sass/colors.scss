@@ -1,0 +1,24 @@
+$Pink: #fe68a8;
+$Blue: #3869c8;
+$Purple: #9758da;
+$Turq: #4fdddf;
+$White: #f0f0f0;
+$Neutral: #3d4451;
+
+@mixin whitepink {
+  color: $White;
+  background-color: $Pink;
+}
+
+@mixin blackpink {
+  color: #000;
+  background-color: $Pink;
+}
+
+.whitepink {
+  @include whitepink;
+}
+
+.blackpink {
+  @include blackpink;
+}

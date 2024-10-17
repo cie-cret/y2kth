@@ -31,27 +31,25 @@ onMounted(() => {
 
 <template>
   <!-- Announcement -->
-  <div class="container mx-auto max-w-screen-2xl">
-    <div class="announcement flex justify-center bg-primary text-base-100 py-1">
-      <p class="text-lg drop-shadow">Discount 10% when shop in our online store</p>
+  <div class="container mx-auto">
+    <div class="announcement whitepink flex justify-center py-1">
+      <p class="drop-shadow">This Website is under the process (70%)</p>
     </div>
     <!-- Navbar -->
     <div>
       <div class="navbar px-10 relative">
-        <div class="navbar-start flex gap-16">
+        <!-- Left -->
+        <div class="nav-title navbar-start flex">
           <li v-for="(menu, index) in menus" :key="index">
             <RouterLink
               :to="{ name: menu.routeName }"
-              class="list-none"
               :class="menu.routeName === activeMenu ? 'active' : ''"
               >{{ menu.name }}</RouterLink
             >
           </li>
-          <!-- <div><RouterLink :to="{ name: 'home' }">Home</RouterLink></div>
-          <div><RouterLink :to="{ name: 'shop' }">Shop</RouterLink></div>
-          <div><RouterLink :to="{ name: 'about' }">About</RouterLink></div>
-          <div><RouterLink :to="{ name: 'contact' }">Contact Us</RouterLink></div> -->
-          <!-- <div class="dropdown">
+        </div>
+        <!-- Mini nav -->
+        <div class="mini-nav navbar-start dropdown">
           <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,25 +66,28 @@ onMounted(() => {
               />
             </svg>
           </div>
+          <!-- Toggle -->
           <ul
             tabindex="0"
-            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+            class="menu menu-sm dropdown-content bg-base-100 z-10 mt-48 w-52 p-2 shadow"
           >
-            <li><a>Homepage</a></li>
-            <li><a>Portfolio</a></li>
-            <li><a>About</a></li>
+            <li v-for="(menu, index) in menus" :key="index">
+              <RouterLink
+                :to="{ name: menu.routeName }"
+                :class="menu.routeName === activeMenu ? 'active' : ''"
+                >{{ menu.name }}</RouterLink
+              >
+            </li>
           </ul>
-        </div> -->
         </div>
+        <!-- Center -->
+        <!-- Logo -->
         <RouterLink :to="{ name: 'home' }">
-          <div class="navbar-center text-xl hover:bg-[#f0f0f0]">
-            <img
-              class="w-36 absolute top-0 bottom-0 center-logo"
-              src="/logo_y2k.png"
-              alt="Y2K_logo"
-            />
+          <div class="navbar-center text-xl">
+            <img class="center-logo absolute" src="/logo_y2k.png" alt="Y2K_logo" />
           </div>
         </RouterLink>
+        <!-- Right -->
         <!-- Cart -->
         <div class="navbar-end">
           <button class="btn btn-ghost btn-circle">
@@ -131,7 +132,7 @@ onMounted(() => {
             </div>
             <ul
               tabindex="0"
-              class="menu menu-sm dropdown-content bg-base-100 mt-3 w-52 p-2 z-10 shadow"
+              class="menu menu-sm dropdown-content bg-base-100 mt-2 w-52 p-2 z-10 shadow"
             >
               <li>
                 <a class="justify-between"> Login </a>
@@ -204,22 +205,113 @@ onMounted(() => {
   </div>
 </template>
 
-<style scoped>
-/* @import '../scss/breakpoints.scss'; */
+<style scoped lang="scss">
+@import '../assets/sass/style.scss';
+@import '../assets/sass/colors.scss';
 
 * {
   box-sizing: border-box;
-}
-
-li {
   list-style: none;
 }
 
-.center-logo {
-  left: 0;
-  right: 0;
-  margin-inline: auto;
+.container {
+  max-width: 100%;
 }
+
+.announcement {
+  p {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  @include mobile {
+    p {
+      font-size: 0.75rem;
+      line-height: 1rem;
+    }
+  }
+
+  @include laptop {
+    p {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+    }
+  }
+}
+
+// Navbar
+
+.navbar {
+  // padding: 0 2.5rem;
+  @include mobile {
+    padding: 0;
+  }
+
+  // @include verticalTablet {
+  //   padding: 0 2.5rem;
+  // }
+
+  @include horizontalTablet {
+    padding: 0 2.5rem;
+  }
+
+  @include laptop {
+    padding: 0 2.5rem;
+  }
+}
+
+.nav-title {
+  @include mobile {
+    display: none;
+  }
+
+  @include horizontalTablet {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  @include laptop {
+    display: flex;
+    gap: 4rem;
+  }
+}
+
+.mini-nav {
+  @include mobile {
+    display: flex;
+  }
+
+  @include horizontalTablet {
+    display: none;
+  }
+}
+
+// Navbar Center (Logo)
+
+.center-logo {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 9rem;
+
+  @include mobile {
+    width: 6rem;
+  }
+
+  @include laptop {
+    width: 9rem;
+  }
+}
+
+// Navbar End
+
+// .navbar-end {
+//   @include mobile {
+//     display: none;
+//   }
+// }
 
 .active {
   color: #3869c8;

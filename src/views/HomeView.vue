@@ -74,6 +74,8 @@ const productList = userProductStore.productList
 <style scoped lang="scss">
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import '../assets/sass/breakpoints.scss';
+@import '../assets/sass/colors.scss';
 
 .shop-button {
   font-family: 'Pixelify Sans', sans-serif;
@@ -100,10 +102,26 @@ const productList = userProductStore.productList
 .welcome-text {
   font-family: 'VT323', monospace;
   font-weight: 700;
+
+  @include horizontalbp {
+    @media (max-width: 667px) {
+      font-size: 7rem !important;
+    }
+  }
 }
 
 .hero {
-  min-height: 84vh;
+  @include mobile {
+    min-height: 78vh;
+  }
+
+  @include verticalTablet {
+    min-height: 30vh;
+  }
+
+  @include laptop {
+    min-height: 84vh;
+  }
 }
 
 h1 {

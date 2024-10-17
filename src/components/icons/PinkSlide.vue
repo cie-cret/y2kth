@@ -25,6 +25,8 @@ defineProps<{ message: string }>()
 </template>
 
 <style scoped lang="scss">
+@import '../../assets/sass/breakpoints.scss';
+
 .logos {
   // background: #000000;
   overflow: hidden;
@@ -42,6 +44,14 @@ defineProps<{ message: string }>()
     font-family: 'VT323', monospace;
     font-weight: 700;
     font-size: 5rem;
+
+    @include mobile {
+      font-size: 4rem;
+    }
+
+    @include laptop {
+      font-size: 5rem;
+    }
   }
 }
 
